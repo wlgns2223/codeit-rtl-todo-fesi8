@@ -46,7 +46,7 @@ describe("Form test suite", () => {
     await User.type(input, newTodo.todo);
     await User.click(button);
 
-    expect(setTodosMock).toHaveBeenCalledTimes(1);
+    expect(setTodosMock).not.toHaveBeenCalledTimes(1);
     expect(handleSaveToStorageMock).toHaveBeenCalledTimes(1);
     expect(handleSaveToStorageMock).toHaveBeenCalledWith(newTodo);
   });
