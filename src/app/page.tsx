@@ -6,8 +6,6 @@ import { List } from "../components/list";
 import { TODO } from "../components/types";
 import { fetchAllTodos, saveToStorage } from "../lib/storage-api";
 
-export const LIST_KEY = "todo-list";
-
 export default function Home() {
   const [todos, setTodos] = useState<TODO[]>([]);
 

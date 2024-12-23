@@ -1,5 +1,6 @@
-import { LIST_KEY } from "../app/page";
 import { TODO } from "../components/types";
+
+export const LIST_KEY = "todo-list";
 
 export const saveToStorage = (newTodos: TODO[]) =>
   Promise.resolve(() => {
