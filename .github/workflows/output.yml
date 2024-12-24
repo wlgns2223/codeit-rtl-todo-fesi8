@@ -1,7 +1,7 @@
 name: Context Object Output
 on: workflow_dispatch
 jobs:
-  info:
+  print:
     runs-on: ubuntu-latest
     steps:
       - name: Print Output
