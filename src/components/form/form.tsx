@@ -17,7 +17,7 @@ export const Form: React.FC<FormProps> = ({
     setTodo(e.target.value);
   };
 
-  const handleAddTodo = (
+  const handleAddTodo = async (
     e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement>
   ) => {
     e.preventDefault();
@@ -36,13 +36,13 @@ export const Form: React.FC<FormProps> = ({
       return [...prev, newTodo];
     });
 
-    handleSaveToStorage(newTodo);
+    await handleSaveToStorage(newTodo);
 
     setTodo("");
   };
 
   return (
-    <form className="flex flex-col space-y-4" onSubmit={handleAddTodo}>
+    <form className="flex flex-col space-y-4 " onSubmit={handleAddTodo}>
       <label htmlFor="todo" className="sr-only">
         {"입력"}
       </label>
