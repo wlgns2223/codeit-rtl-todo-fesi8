@@ -9,8 +9,14 @@ env:
   NEXT_PUBLIC_DB_NAME: test-db
 
 jobs:
-  echo:
+  run-test:
     runs-on: ubuntu-latest
     steps:
-      - name: Echo
-        run: echo "Hello";
+      - name: Get Codes
+        run: actions/checkout@v3
+
+      - name: Download Deps
+        run: npm ci
+
+      - name: Run Tests
+        run: npm run test
