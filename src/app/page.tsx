@@ -43,7 +43,7 @@ export default function Home() {
 
   return (
     <main className="p-4 rounded-md bg-white shadow-md w-full max-w-md flex flex-col">
-      <h1 className="font-bold text-sm ">{"To Do Lists"}</h1>
+      <h1 className="font-bold text-sm ">{"To Do List"}</h1>
       <List todos={todos} setTodos={setTodos} />
       <Form setTodos={setTodos} handleSaveToStorage={handleSaveToStorage} />
       <button
