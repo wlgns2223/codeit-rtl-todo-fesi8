@@ -1,0 +1,16 @@
+name: pull request and test
+on:
+  push:
+    branches:
+      - dev
+
+  workflow_dispatch:
+env:
+  NEXT_PUBLIC_DB_NAME: test-db
+
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo
+        run: echo "Hello";

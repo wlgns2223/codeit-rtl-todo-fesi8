@@ -41,9 +41,11 @@ export default function Home() {
     fetchAllTodos().then((items) => setTodos(items));
   }, []);
 
+  const str = process.env.NEXT_PUBLIC_DB_NAME;
   return (
     <main className="p-4 rounded-md bg-white shadow-md w-full max-w-md flex flex-col">
       <h1 className="font-bold text-sm ">{"To Do List"}</h1>
+      <h2>{str}</h2>
       <List todos={todos} setTodos={setTodos} />
       <Form setTodos={setTodos} handleSaveToStorage={handleSaveToStorage} />
       <button
