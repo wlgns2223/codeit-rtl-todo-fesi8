@@ -6,7 +6,7 @@ on:
 
   workflow_dispatch:
 env:
-  NEXT_PUBLIC_DB_NAME: test-db
+  NEXT_PUBLIC_TEST: test-db
 
 jobs:
   run-test:
@@ -20,3 +20,16 @@ jobs:
 
       - name: Run Tests
         run: npm run test
+
+  build:
+    needs: run-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Codes
+        uses: actions/checkout@v3
+
+      - name: Download Deps
+        run: npm ci
+
+      - name: Build
+        run: npm build
