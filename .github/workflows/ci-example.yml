@@ -1,10 +1,8 @@
 name: pull request and test
 on:
-  push:
+  workflow_dispatch:
     branches:
       - dev
-
-  workflow_dispatch:
 
 jobs:
   create-pr:
