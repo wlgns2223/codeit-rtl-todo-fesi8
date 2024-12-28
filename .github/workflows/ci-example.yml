@@ -20,7 +20,8 @@ jobs:
           title: "Auto PR: PR Test"
           body: "this is pr test from dev to main"
           token: ${{ secrets.ACTION_TEST_TOKEN }}
-          branch: main
+          base: main
+          branch: ${{ github.ref }}
 
   run-tests:
     name: Run Test
