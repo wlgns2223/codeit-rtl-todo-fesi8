@@ -9,6 +9,16 @@ env:
   NEXT_PUBLIC_DB_NAME: test-db
 
 jobs:
+  check-env:
+    env:
+      NEXT_PUBLIC_PORT: 8080
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check env variables
+        run: |
+          echo "${{ env.NEXT_PUBLIC_PORT }}"
+          echo "${{ env.NEXT_PUBLIC_DB_NAME }}"
+
   run-test:
     runs-on: ubuntu-latest
     steps:
