@@ -6,7 +6,7 @@ on:
 
   workflow_dispatch:
 env:
-  NEXT_PUBLIC_TEST: test-db
+  NEXT_PUBLIC_DB_NAME: test-db
 
 jobs:
   run-test:
