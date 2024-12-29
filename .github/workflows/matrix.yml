@@ -20,4 +20,6 @@ jobs:
         run: npm ci
 
       - name: Build
+        env:
+          NEXT_PUBLIC_DB_NAME: ${{ secrets.NEXT_PUBLIC_DB_NAME }}
         run: npm run build
