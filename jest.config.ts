@@ -10,6 +10,7 @@ const createJestConfig = nextJest({
 });
 
 const config: Config = {
+  collectCoverage: true,
   clearMocks: true,
   coverageProvider: "v8",
   testEnvironment: "jsdom",

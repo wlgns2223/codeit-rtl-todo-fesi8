@@ -33,6 +33,11 @@ jobs:
       - name: Run Test
         run: npm run test
 
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
   test-fail-report:
     name: Test Failure Report
     runs-on: ubuntu-latest
