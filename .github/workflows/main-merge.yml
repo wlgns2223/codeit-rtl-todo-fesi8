@@ -1,0 +1,24 @@
+name: When Merged To Main
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+jobs:
+  if_merged:
+    name: Test And Build
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Codes
+        uses: actions/checkout@v4
+
+      - name: Install Deps
+        run: npm ci
+
+      - name: Test
+        run: npm run test
+
+      - name: Build
+        run: npm run build
