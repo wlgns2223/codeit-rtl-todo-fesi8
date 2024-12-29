@@ -6,7 +6,13 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18, 20]
+        operating-system-type: ["ubuntu-latest", "windows-latest"]
+
+    # matrix 컨텍스트. Dynamic하기 runner 설정가능
+    runs-on: ${{ matrix.operating-system-type }}
     steps:
       - name: Get Codes
         uses: actions/checkout@v4
@@ -14,7 +20,8 @@ jobs:
       - name: Install Nodejs
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          # matrix컨텍스트를 통해 dynamic하게 node-version 설정가능
+          node-version: ${{ matrix.node-version }}
 
       - name: Install Deps
         run: npm ci
