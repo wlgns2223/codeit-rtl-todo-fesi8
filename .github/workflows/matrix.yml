@@ -19,7 +19,7 @@ jobs:
             operating-system-type: ubuntu-latest
 
         # include의 반대 ,특정 조합 제외
-        exlude:
+        exclude:
           - node-version: 12
             operating-system-type: windows-latest
 
