@@ -1,5 +1,9 @@
 name: pull request and test
 on:
+  push:
+    branches:
+      - dev
+
   workflow_dispatch:
     branches:
       - dev
@@ -27,10 +31,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download Codes
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install Deps
         run: npm ci
 
       - name: Run Tests
+        id: run-tests
         run: npm run test
+
+      - name: Report Test Result if fail
+        if: ${{ steps.run-tests.outcome }} == 'failure'
+        run: echo "test failed"
