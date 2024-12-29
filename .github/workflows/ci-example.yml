@@ -43,3 +43,13 @@ jobs:
       - name: Report Test Result if fail
         if: failure() && steps.run-tests.outcome  == 'failure'
         run: echo "test failed"
+
+  failure-report:
+    name: Failure Report
+    runs-on: ubuntu-latest
+    if: failure()
+    steps:
+      - name: Report
+        run: |
+          echo "Something Went Wrong"
+          echo "Report..."
