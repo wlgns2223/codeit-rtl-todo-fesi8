@@ -8,7 +8,7 @@ jobs:
   build:
     strategy:
       matrix:
-        node-version: [18, 20]
+        node-version: [12, 14, 18]
         operating-system-type: ["ubuntu-latest", "windows-latest"]
 
     # matrix 컨텍스트. Dynamic하기 runner 설정가능
