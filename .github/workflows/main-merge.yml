@@ -10,6 +10,8 @@ jobs:
     name: Test And Build
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_DB_NAME: ${{ secrets.NEXT_PUBLIC_DB_NAME}}
     steps:
       - name: Download Codes
         uses: actions/checkout@v4
