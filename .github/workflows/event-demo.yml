@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download Codes
-        uses: action/checkout@v4
+        uses: actions/checkout@v4
 
       - name: Install Deps
         run: npm ci
