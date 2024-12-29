@@ -1,0 +1,27 @@
+name: Event Demo
+on:
+  pull_request:
+    types:
+      - opened
+
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Codes
+        uses: action/checkout@v4
+
+      - name: Install Deps
+        run: npm ci
+
+      - name: Run Tests
+        run: npm run test
+
+      - name: Run Build
+        run: npm run build
+
+      - name: Deploy
+        run: echo "deploy..."
