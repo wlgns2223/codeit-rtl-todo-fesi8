@@ -21,7 +21,7 @@ jobs:
         # include의 반대 ,특정 조합 제외
         exlude:
           - node-version: 12
-            operating-system: windows-latest
+            operating-system-type: windows-latest
 
     # matrix 컨텍스트. Dynamic하기 runner 설정가능
     runs-on: ${{ matrix.operating-system-type }}
