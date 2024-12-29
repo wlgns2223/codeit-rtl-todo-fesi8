@@ -41,5 +41,5 @@ jobs:
         run: npm run test
 
       - name: Report Test Result if fail
-        if: ${{ steps.run-tests.outcome  == 'failure' }}
+        if: failure() &&  ${{ steps.run-tests.outcome  == 'failure' }}
         run: echo "test failed"
