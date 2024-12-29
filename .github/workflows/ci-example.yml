@@ -51,6 +51,7 @@ jobs:
 
   fake-linting:
     name: Fake Linting For Test
+    needs: run-tests
     runs-on: ubuntu-latest
     steps:
       - name: Linting
