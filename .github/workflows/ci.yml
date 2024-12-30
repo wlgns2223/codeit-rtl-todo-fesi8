@@ -23,7 +23,7 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
 
   create-pr:
-    needs: test
+    needs: run-test
     name: Create PR
     runs-on: ubuntu-latest
     steps:
