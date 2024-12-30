@@ -1,0 +1,49 @@
+name: Run Test Then PR
+on:
+  push:
+    branches:
+      - dev
+jobs:
+  run-test:
+    name: Run Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Codes
+        uses: actions/checkout@v4
+
+      - name: Install Deps
+        run: npm ci
+
+      - name: Run Test
+        run: npm run test
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+  create-pr:
+    needs: run-test
+    name: Create PR
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Codes
+        uses: actions/checkout@v4
+
+      - name: Create PR
+        uses: peter-evans/create-pull-request@v7
+        with:
+          title: "auto PR"
+          body: "this pr is created automatically"
+          token: ${{ secrets.ACTION_TEST_TOKEN }}
+          base: main
+          branch: ${{ github.ref }}
+
+  # test-fail-report:
+  #   name: Test Failure Report
+  #   runs-on: ubuntu-latest
+  #   needs: test
+  #   if: failure()
+  #   steps:
+  #     - name: report
+  #       run: echo "Test Fail"
