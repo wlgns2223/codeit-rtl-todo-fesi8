@@ -47,6 +47,7 @@ export const List: React.FC<ListProps> = ({ todos, setTodos }) => {
                 {todo.done ? "취소" : "완료"}
               </button>
               <button
+                aria-label="delete"
                 onClick={() => handleDelete(todo.id)}
                 className="text-sm text-red-400"
               >
@@ -60,7 +61,7 @@ export const List: React.FC<ListProps> = ({ todos, setTodos }) => {
   );
 };
 
-const Icons: React.FC<{ todo: TODO }> = ({ todo }) => {
+export const Icons: React.FC<{ todo: TODO }> = ({ todo }) => {
   return todo.done ? (
     <CheckCircleIcon
       role="img"
