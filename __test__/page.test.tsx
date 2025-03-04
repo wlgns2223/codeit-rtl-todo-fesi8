@@ -64,7 +64,7 @@ describe("page test suites", () => {
     expect(saveToCloudMock).toHaveBeenCalledTimes(1);
     expect(saveToCloudMock).toHaveBeenCalledWith([
       {
-        id: 2,
+        id: 1,
         done: false,
         todo: "todo",
       },
