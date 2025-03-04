@@ -10,7 +10,7 @@ describe("page test suites", () => {
   const getTimeSpy = jest.spyOn(Date.prototype, "getTime");
   getTimeSpy.mockReturnValue(1);
 
-  const alertSpy = jest.spyOn(window, "alert");
+  const alertSpy = jest.spyOn(window, "alert").mockImplementation(() => {});
 
   afterEach(() => {
     jest.clearAllMocks();
@@ -19,7 +19,7 @@ describe("page test suites", () => {
   beforeEach(() => {
     jest.mocked(fetchAllTodos).mockResolvedValue([
       {
-        id: 1,
+        id: 2,
         done: false,
         todo: "todo",
       },
@@ -64,7 +64,7 @@ describe("page test suites", () => {
     expect(saveToCloudMock).toHaveBeenCalledTimes(1);
     expect(saveToCloudMock).toHaveBeenCalledWith([
       {
-        id: 1,
+        id: 2,
         done: false,
         todo: "todo",
       },

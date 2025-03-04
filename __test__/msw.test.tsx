@@ -68,7 +68,6 @@ describe("msw test suites", () => {
     const listItems = await screen.findAllByRole("listitem");
 
     // 실제 렌더링이 어떻게되는지 확인
-    screen.debug();
 
     listItems.forEach((listItem) => {
       expect(listItem).toBeInTheDocument();

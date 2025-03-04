@@ -43,8 +43,6 @@ export default function Home() {
     });
   }, []);
 
-  console.log("todos", todos);
-
   return (
     <main className="p-4 rounded-md bg-white shadow-md w-full max-w-md flex flex-col">
       <h1 className="font-bold text-sm ">{"To Do List"}</h1>
