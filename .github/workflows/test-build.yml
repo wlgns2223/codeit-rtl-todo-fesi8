@@ -23,6 +23,7 @@ jobs:
         run: npm run test
 
   Build:
+    needs: Test
     runs-on: ubuntu-latest
     steps:
       - name: 코드 가져오기
