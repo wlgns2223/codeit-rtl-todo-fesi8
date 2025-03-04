@@ -1,3 +1,10 @@
+# .yml ,yaml 파일에 작성
+# 설정
+# 들여쓰기
+
+# 한 파일에 작성되어있는 코드들 -> 워크플로우
+# 하나의 워크플로우는 여러가지 일을 수행할 수 있다.
+
 name: First Workflow
 on: workflow_dispatch
 jobs:
@@ -6,3 +13,9 @@ jobs:
     steps:
       - name: Hello
         run: echo "Hello, world!"
+
+  second-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Bye
+        run: echo "Bye, world!"
