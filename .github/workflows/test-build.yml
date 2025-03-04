@@ -9,10 +9,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 코드 가져오기
+        # github 레포지토리 안전하고 효율적으로 clone하는 명령어를
+        # 누가 만들어놓음
+        # 레포지토리/액션@버전
+        uses: actions/checkout@v4
+
+      - name: 모듈 설치하기
+        # npm ci clean install
+        #run: 내가 직접 명령어를 실행할때.
+        run: npm install
+
+      - name: 테스트 실행하기
+        run: npm run test
+
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 코드 가져오기
         uses: actions/checkout@v4
 
       - name: 모듈 설치하기
         run: npm install
 
-      - name: 테스트 실행하기
-        run: npm run test
+      - name: 빌드하기
+        run: npm run build
