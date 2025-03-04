@@ -43,6 +43,10 @@ describe("list test suites", () => {
     saveToStorage: saveToStorageMock,
   }));
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("update 버튼을 누르면 todo상태업데이트를 하고 ,비동기 함수를 호출한다.", () => {
     const setTodoMock = jest.fn();
     render(<List setTodos={setTodoMock} todos={fakeTodos} />);

@@ -13,7 +13,7 @@ const config: Config = {
   collectCoverage: true,
   clearMocks: true,
   coverageProvider: "v8",
-  testEnvironment: "jsdom",
+  testEnvironment: "jest-fixed-jsdom",
   // testMatch: ["**/*.test.tsx"],
 };
 

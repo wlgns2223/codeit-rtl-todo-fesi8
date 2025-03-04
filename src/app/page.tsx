@@ -38,8 +38,12 @@ export default function Home() {
   };
 
   useEffect(() => {
-    fetchAllTodos().then((items) => setTodos(items));
+    fetchAllTodos().then((items) => {
+      setTodos(items);
+    });
   }, []);
+
+  console.log("todos", todos);
 
   return (
     <main className="p-4 rounded-md bg-white shadow-md w-full max-w-md flex flex-col">

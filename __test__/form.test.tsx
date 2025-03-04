@@ -7,8 +7,8 @@ import User from "@testing-library/user-event";
 describe("form test suites", () => {
   // 세부적인 로직을 없애고 감시를 함.
   // jest.mock("Date", () => ({
-  //     getTime: jest.fn().mockReturnValue(1),
-  // }))
+  //   getTime: jest.fn().mockReturnValue(1),
+  // }));
   // 실제 로직이 중요하지 않을 경우
 
   //jest.spyOn 일종의 모킹함수
@@ -17,10 +17,13 @@ describe("form test suites", () => {
   // 모듈을 import를 하긴 해야함.
   // jest.spyOn("모듈", "함수")
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("form handleAddTodo test", async () => {
     const handleSaveToStorageMock = jest.fn();
     const setTodoMock = jest.fn();
-
     // spy객체
     // jest.spyOn 원래 로직을 그대로 살려줌.
 
