@@ -47,3 +47,4 @@ jobs:
           # main < -- dev
           base: main
           branch: ${{ github.ref}}
+          token: ${{ secrets.CICD_KEY}}
