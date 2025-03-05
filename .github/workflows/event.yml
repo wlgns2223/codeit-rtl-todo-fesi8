@@ -8,8 +8,10 @@ on:
   # 특정 브랜치에만 워크플로우가 적용이 되도록
   # main 브랜치 push
   push:
+    branches:
+      - dev
     paths-ignore:
-      - "./github/workflows/*"
+      - ".github/workflows/*"
 
     # - feat/login
     # - feat/header
