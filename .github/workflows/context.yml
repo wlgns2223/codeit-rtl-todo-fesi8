@@ -4,7 +4,6 @@ jobs:
   print-context:
     runs-on: ubuntu-latest
     steps:
-      # - name: Install Nodes
       #   # repository-name/action-name@version
       #   # 개발환경 vs 프로덕션 환경
       #   # 개발환경 node 22 version
@@ -12,12 +11,16 @@ jobs:
       #   # 테스트환경 node 20 version
       #   # 프로덕션환경 node ??
 
-      #   uses: actions/setup-node@v4
-      #   with:
-      #     node-version: 22
+      - name: Install Nodes
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
 
       - name: check node version
         run: node -v
+
+      - name: ls
+        run: ls -al
 
       - name: Print Context
         run: echo "${{toJSON(github)}} "
