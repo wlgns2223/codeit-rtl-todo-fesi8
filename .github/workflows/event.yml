@@ -10,6 +10,17 @@ on:
   push:
     branches:
       - dev
+    paths-ignore:
+      - "./github/workflows/**"
+
+    # - feat/login
+    # - feat/header
+    # - feat/** # feat, feat/login, feat/header/button...
+    # - release-* # release-1.0.0, release-1.0.1...
+    # - ui/button
+    # - ui/** # ui, ui/button, ui/header...
+
+    # 특정 브랜치,폴더,파일에 대해서 무시
 
 # 이벤트 트리거 조건
 # 1. activity type
