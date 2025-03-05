@@ -1,0 +1,20 @@
+name: Event
+on:
+  pull_request:
+    # 특정 이벤트가 가지는 activity 타입을 명시
+    types: [opened, closed]
+
+# 이벤트 트리거 조건
+# 1. activity type
+# 특정 이벤트가 세분화
+# pull_request
+
+# 2. filtering
+#
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello World
+        run: echo "Hello World"
