@@ -19,6 +19,11 @@ jobs:
       - name: 테스트하기
         run: npm run test
 
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
       - name: 리포트 업로드
         uses: actions/upload-artifact@v4
         with:
