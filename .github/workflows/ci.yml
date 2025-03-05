@@ -1,8 +1,7 @@
 name: ci
 on:
   push:
-    branches:
-      - dev
+
 env:
   NEXT_PUBLIC_API_KEY: ${{ secrets.NEXT_PUBLIC_API_KEY }}
 
