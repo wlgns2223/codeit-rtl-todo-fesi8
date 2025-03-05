@@ -11,7 +11,7 @@ on:
     branches:
       - dev
     paths-ignore:
-      - "./github/workflows/**"
+      - "./github/workflows/*"
 
     # - feat/login
     # - feat/header
