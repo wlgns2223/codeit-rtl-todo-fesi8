@@ -1,0 +1,50 @@
+name: ci
+on:
+  push:
+    branches:
+      - dev
+env:
+  NEXT_PUBLIC_API_KEY: ${{ secrets.NEXT_PUBLIC_API_KEY }}
+
+jobs:
+  test-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 코드 가져오기
+        uses: actions/checkout@v4
+
+      - name: 모듈 다운받기
+        run: npm ci
+
+      - name: 테스트하기
+        run: npm run test
+
+      - name: 리포트 업로드
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-report
+          path: coverage
+
+      - name: 빌드
+        run: npm run build
+
+  pr:
+    needs: test-build
+    name: PR 자동으로 생성하기
+    runs-on: ubuntu-latest
+    steps:
+      - name: pr 실행하기
+        run: echo "자동 pr 날리기"
+
+      - name: 코드 가져오기
+        uses: actions/checkout@v4
+
+      - name: PR 생성하기
+        uses: peter-evans/create-pull-request@v7
+        with:
+          title: 자동생성된 PR
+          body: 자동생성 PR 테스트입니다.
+          # main < -- dev
+          base: main
+          branch: ${{ github.ref}}
+          token: ${{ secrets.CICD_KEY}}
