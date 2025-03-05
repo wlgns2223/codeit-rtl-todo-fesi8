@@ -2,7 +2,7 @@ name: Event
 on:
   pull_request:
     # 특정 이벤트가 가지는 activity 타입을 명시
-    types: [opened, closed]
+    types: [opened]
 
   # 이벤트 필터링
   # 특정 브랜치에만 워크플로우가 적용이 되도록
