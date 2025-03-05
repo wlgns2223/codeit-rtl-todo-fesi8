@@ -4,6 +4,12 @@ on:
     # 특정 이벤트가 가지는 activity 타입을 명시
     types: [opened, closed]
 
+  # 이벤트 필터링
+  # 특정 브랜치에만 워크플로우가 적용이 되도록
+  push:
+    branches:
+      - dev
+
 # 이벤트 트리거 조건
 # 1. activity type
 # 특정 이벤트가 세분화
