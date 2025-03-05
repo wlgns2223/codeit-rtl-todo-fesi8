@@ -1,5 +1,9 @@
 name: Test, Build, Deploy
-on: push
+
+# workflow_dispatch: 수동
+# push: push가 되었을때
+on: [workflow_dispatch, push]
+
 jobs:
   # 1. Test
   # 2. build
