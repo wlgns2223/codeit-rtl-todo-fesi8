@@ -1,0 +1,16 @@
+name: Context Object
+on: [workflow_dispatch, push]
+jobs:
+  print-context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Context
+        run: echo "${{toJSON(github)}} "
+# echo -> linux에서 로그를 출력하는 명령어
+
+# Context
+# 전역적으로 접근이 가능한 변수
+# github action에 대한 메타 데이터
+# 어떤 레포지토리인가? , 레포지토리 주인이 누구?, 어떤 이벤트에 의해서 트리거가 됐는지?...
+
+# ${{ 변수 }} -> 변수를 사용할 때 사용하는 문법
