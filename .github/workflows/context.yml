@@ -4,6 +4,21 @@ jobs:
   print-context:
     runs-on: ubuntu-latest
     steps:
+      # - name: Install Nodes
+      #   # repository-name/action-name@version
+      #   # 개발환경 vs 프로덕션 환경
+      #   # 개발환경 node 22 version
+      #   # npm 모듈 -> 자신들이 돌아 갈 수 있는 최적의 버전
+      #   # 테스트환경 node 20 version
+      #   # 프로덕션환경 node ??
+
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: 22
+
+      - name: check node version
+        run: node -v
+
       - name: Print Context
         run: echo "${{toJSON(github)}} "
 # echo -> linux에서 로그를 출력하는 명령어
