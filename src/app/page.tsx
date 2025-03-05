@@ -12,6 +12,11 @@ import {
 } from "../lib/storage-api";
 
 export default function Home() {
+  const key = process.env.NEXT_PUBLIC_API_KEY;
+  if (!key) {
+    throw new Error("API Key is not provided.");
+  }
+
   const [todos, setTodos] = useState<TODO[]>([]);
 
   const handleSaveToStorage = async (todo: TODO) => {
