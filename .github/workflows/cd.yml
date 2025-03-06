@@ -20,6 +20,7 @@ on:
 
 jobs:
   test-build:
+    if: github.event.pull_request.merged == true
     environment: production
     env:
       NEXT_PUBLIC_API_KEY: ${{ secrets.NEXT_PUBLIC_API_KEY }}
@@ -45,3 +46,12 @@ jobs:
 
       - name: 빌드
         run: npm run build
+
+  deploy:
+    needs: test-build
+    name: Vercel에 배포
+    runs-on: ubuntu-latest
+    steps:
+      - name: Vercel에 배포
+        # linux cli
+        run: curl -X POST ${{secrets.DEPLOY_HOOK_URL}}
