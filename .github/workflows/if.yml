@@ -4,6 +4,9 @@ on:
     branches:
       - dev
 
+env:
+  NEXT_PUBLIC_API_KEY: ${{ secrets.NEXT_PUBLIC_API_KEY }}
+
 jobs:
   test-build:
     runs-on: ubuntu-latest
