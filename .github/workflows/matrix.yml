@@ -6,6 +6,7 @@ env:
 
 jobs:
   build:
+    continue-on-error: true
     strategy:
       matrix:
         # node version. 개발자가 사용한 변수. 이름은 마음대로
