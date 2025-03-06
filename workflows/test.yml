@@ -1,0 +1,38 @@
+# .yml ,yaml 파일에 작성
+# 설정
+# 들여쓰기
+
+# 한 파일에 작성되어있는 코드들 -> 워크플로우
+# 하나의 워크플로우는 여러가지 일을 수행할 수 있다.
+
+# name: 워크플로우의 이름
+name: First Workflow
+
+# on: 워크플로우를 트리거하는 이벤트
+# 자주 쓰이는 이벤트:
+#  push, workflow_dispatch ( 수동 트리거 ), pull_request
+on: workflow_dispatch
+
+# jobs: 워크플로우가 수행할 일들을 나열한다.
+jobs:
+  # job의 이름
+  # 고유한 환경에서 실행이된다.
+  first-job:
+    # job이 실행될 환경
+    # ubuntu: 리눅스의 한 종류
+    # windows, macos도 가능
+    runs-on: ubuntu-latest
+
+    # job을 하기위해서 해야할 일을 단계적으로 나열
+    steps:
+      # step의 이름
+      - name: Hello
+
+        # 구체적인 명령어
+        run: echo "Hello, world!"
+
+  second-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Bye
+        run: echo "Bye, world!"
