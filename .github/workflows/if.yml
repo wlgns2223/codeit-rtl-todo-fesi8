@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - dev
+      - main
 
 env:
   NEXT_PUBLIC_API_KEY: ${{ secrets.NEXT_PUBLIC_API_KEY }}
@@ -24,6 +25,8 @@ jobs:
         run: npm run build
 
   lint:
+    # 워크플로우를 트리거한 브랜치가 dev일때만 실행
+    if: github.ref == 'refs/heads/dev'
     runs-on: ubuntu-latest
     steps:
       - name: 코드 가져오기
