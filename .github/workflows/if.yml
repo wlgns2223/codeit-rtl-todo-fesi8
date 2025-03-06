@@ -39,4 +39,6 @@ jobs:
         run: npm run lint
 
       - name: 린트 실패시 로그
+        # 앞선 단계에서 하나라도 실패를 하면 true를 반환
+        if: failure()
         run: echo "린트가 실패했습니다."
