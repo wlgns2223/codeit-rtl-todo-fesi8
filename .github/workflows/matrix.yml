@@ -17,6 +17,10 @@ jobs:
         # os, os-version...
         os: [ubuntu-latest, windows-latest, macos-latest]
 
+        exclude:
+          - node-version: 20
+            os: macos-latest
+
     runs-on: ${{matrix.os }}
     steps:
       - name: 노드 설치
