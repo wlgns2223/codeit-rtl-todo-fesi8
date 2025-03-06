@@ -37,3 +37,6 @@ jobs:
 
       - name: 린트
         run: npm run lint
+
+      - name: 린트 실패시 로그
+        run: echo "린트가 실패했습니다."
