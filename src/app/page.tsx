@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { Form } from "../components/form/form";
 import { List } from "../components/list/list";
