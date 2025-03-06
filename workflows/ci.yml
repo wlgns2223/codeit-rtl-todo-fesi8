@@ -1,49 +1,51 @@
-name: Run Test Then PR
+name: ci
 on:
   push:
     branches:
       - dev
+
+env:
+  NEXT_PUBLIC_API_KEY: ${{ secrets.NEXT_PUBLIC_API_KEY }}
+
 jobs:
-  run-test:
-    name: Run Test
+  test-build:
     runs-on: ubuntu-latest
     steps:
-      - name: Download Codes
+      - name: 코드 가져오기
         uses: actions/checkout@v4
 
-      - name: Install Deps
+      - name: 모듈 다운받기
         run: npm ci
 
-      - name: Run Test
+      - name: 테스트하기
         run: npm run test
 
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v5
+      - name: 리포트 업로드
+        uses: actions/upload-artifact@v4
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+          name: test-report
+          path: coverage
 
-  create-pr:
-    needs: run-test
-    name: Create PR
+      - name: 빌드
+        run: npm run build
+
+  pr:
+    needs: test-build
+    name: PR 자동으로 생성하기
     runs-on: ubuntu-latest
     steps:
-      - name: Download Codes
+      - name: pr 실행하기
+        run: echo "자동 pr 날리기"
+
+      - name: 코드 가져오기
         uses: actions/checkout@v4
 
-      - name: Create PR
+      - name: PR 생성하기
         uses: peter-evans/create-pull-request@v7
         with:
-          title: "auto PR"
-          body: "this pr is created automatically"
-          token: ${{ secrets.ACTION_TEST_TOKEN }}
+          title: 자동생성된 PR
+          body: 자동생성 PR 테스트입니다.
+          # main < -- dev
           base: main
-          branch: ${{ github.ref }}
-
-  # test-fail-report:
-  #   name: Test Failure Report
-  #   runs-on: ubuntu-latest
-  #   needs: test
-  #   if: failure()
-  #   steps:
-  #     - name: report
-  #       run: echo "Test Fail"
+          branch: ${{ github.ref}}
+          token: ${{ secrets.CICD_KEY}}
