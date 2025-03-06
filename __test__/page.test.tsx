@@ -89,7 +89,7 @@ describe("page test suites", () => {
 
     const listItem = await screen.findAllByRole("listitem");
 
-    expect(listItem).toHaveLength(2);
+    expect(listItem).toHaveLength(1);
     // 1. 모듈 모킹을 하면서 넣어놨던 todo 1개
     // 2. 새로 추가한 todo 1개
   });

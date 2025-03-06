@@ -24,6 +24,10 @@ jobs:
       - name: 빌드
         run: npm run build
 
+      - name: 빌드 실패시 로그
+        if: failure()
+        run: echo "빌드가 실패했습니다."
+
   lint:
     # 워크플로우를 트리거한 브랜치가 dev일때만 실행
     if: github.ref == 'refs/heads/dev'
