@@ -46,7 +46,7 @@ export default function Home() {
     fetchAllTodos().then((items) => {
       setTodos(items);
     });
-    console.log("todos", todos);
+    console.log("todo", todos);
   }, []);
 
   return (

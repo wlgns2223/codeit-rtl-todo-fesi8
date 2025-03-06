@@ -20,6 +20,7 @@ on:
 
 jobs:
   test-build:
+    if: github.event.pull_request.merged == true
     environment: production
     env:
       NEXT_PUBLIC_API_KEY: ${{ secrets.NEXT_PUBLIC_API_KEY }}
