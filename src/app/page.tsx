@@ -44,13 +44,10 @@ export default function Home() {
     alert("삭제되었습니다.");
   };
 
-  const handleSomething = () => {};
-
   useEffect(() => {
     fetchAllTodos().then((items) => {
       setTodos(items);
     });
-    console.log("todo", todos);
   }, []);
 
   return (
