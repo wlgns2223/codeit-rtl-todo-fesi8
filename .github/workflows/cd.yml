@@ -1,0 +1,47 @@
+# Continuous Deployment (CD)
+# main 브랜치에 pr이 merge되면 실행
+# 1. 테스트
+# 2. 빌드
+# 3. 배포
+
+# 프론트엔드에서의 Continuous Deployment
+# github action + vercel
+
+name: Continuous Deployment
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+
+  workflow_dispatch:
+
+jobs:
+  test-build:
+    environment: production
+    env:
+      NEXT_PUBLIC_API_KEY: ${{ secrets.NEXT_PUBLIC_API_KEY }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: 코드 가져오기
+        uses: actions/checkout@v4
+
+      # 노드 버전
+      # 내 로컬 노드 버전 : 22 Version
+      # 배포환경 노드 버전 : 20 Version
+
+      - name: 노드 버전 설치
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: 모듈 설치
+        run: npm ci
+
+      - name: 테스트
+        run: npm run test
+
+      - name: 빌드
+        run: npm run build
