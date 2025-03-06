@@ -11,8 +11,6 @@ import {
   saveToStorage,
 } from "../lib/storage-api";
 
-// test
-
 export default function Home() {
   const key = process.env.NEXT_PUBLIC_API_KEY;
   if (!key) {
@@ -48,6 +46,7 @@ export default function Home() {
     fetchAllTodos().then((items) => {
       setTodos(items);
     });
+    console.log("todos", todos);
   }, []);
 
   return (
