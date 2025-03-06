@@ -29,6 +29,30 @@ jobs:
       - name: 빌드
         run: npm run build
 
+  code-coverage:
+    needs: test-build
+    runs-on: ubuntu-latest
+    steps:
+      - name: 코드 가져오기
+        uses: actions/checkout@v4
+
+      - name: 모듈 설치
+        run: npm ci
+
+      - name: jest 설치
+        run: npm install --save-dev jest
+
+      - name: 커버리지 확인
+        run: npx jest --coverage
+
+        ## codecov 서비스 사이트에서 커버리지 확인 가능
+        # PR 코멘트에서 보려면 다른 yml 파일 추가 해야함
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: wlgns2223/codeit-rtl-todo-fesi8
+
   pr:
     needs: test-build
     name: PR 자동으로 생성하기
