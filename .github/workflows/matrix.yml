@@ -21,6 +21,10 @@ jobs:
           - node-version: 20
             os: macos-latest
 
+        include:
+          - node-version: 22
+            os: ubuntu-latest
+
     runs-on: ${{matrix.os }}
     steps:
       - name: 노드 설치
