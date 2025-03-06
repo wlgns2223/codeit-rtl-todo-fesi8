@@ -1,0 +1,33 @@
+name: Conditional Workflow
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  test-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 코드 가져오기
+        uses: actions/checkout@v4
+
+      - name: 모듈 설치
+        run: npm ci
+
+      - name: 테스트
+        run: npm run test
+
+      - name: 빌드
+        run: npm run build
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 코드 가져오기
+        uses: actions/checkout@v4
+
+      - name: 모듈 설치
+        run: npm ci
+
+      - name: 린트
+        run: npm run lint
