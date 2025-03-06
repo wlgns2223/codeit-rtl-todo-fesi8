@@ -22,10 +22,11 @@ jobs:
         run: npm run test
 
       - name: 빌드
+        id: build
         run: npm run build
 
       - name: 빌드 실패시 로그
-        if: failure()
+        if: failure() && steps.build.outcome == 'failure'
         run: echo "빌드가 실패했습니다."
 
   lint:
